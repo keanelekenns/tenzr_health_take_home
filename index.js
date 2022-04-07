@@ -7,5 +7,4 @@
 
  // Assume that the first argument passed by the user is a path to a .txt file to be parsed
  const filePath = process.argv[2];
- console.log("Parsing", filePath, "...");
- parseFile(filePath);
+ console.log(await parseFile(filePath));
