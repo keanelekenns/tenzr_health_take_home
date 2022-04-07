@@ -1,0 +1,59 @@
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+
+**You may use any programming language of your choosing to answer the following question**
+
+**We are looking out to draw out your coding style, please use best practices and conventions as you see fit**
+
+
+------------------------------------------------------------------------------------------
+Core Functionality
+------------------------------------------------------------------------------------------
+Your task is to write a program that parses a text file and outputs a JSON object as follows:
+
+- For every odd numbered line: starting with the first, every fifth character represents a key and everything in between represents the value.
+
+	- example: given the line "cat", 'c' will be the key and "at" will be the value
+
+
+- For every even numbered line: every 3rd character represents the value, and the key is the remaining corresponding characters
+
+	- example: given the line: "cat" 'ca' will be the key and 't' will be the value
+
+
+------------------------------------------------------------------------------------------
+Other Requirements
+------------------------------------------------------------------------------------------
+
+- Print the average length of keys (Rounded to 2 decimal places)
+
+- Spaces must be ignored
+
+- If a key has already been used, you may skip over parsing that key,value pair
+
+- Please clearly specify any assumptions you have made in your code
+
+- Your program should be able to take a .txt file as an argument
+
+- Include instructions to compile in a readme (if applicable)
+
+- Goodluck :)
+
+------------------------------------------------------------------------------------------
+EXAMPLE
+------------------------------------------------------------------------------------------
+
+		Input: The cat in the hat \n is the hat in the cat 
+
+		Output:
+		{
+ 		 "T": "hec",
+  		 "a": "tin",
+  		 "t": "heh",
+  		 "is": "t",
+ 		 "he": "h",
+		 "at": "i",
+		 "nt": "h",
+		}
+
+		average: 1.57
