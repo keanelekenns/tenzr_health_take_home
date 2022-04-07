@@ -5,17 +5,15 @@
 import { readFile } from 'fs/promises';
 
 /**
- * 
+ * Parse a file according to requirements.txt.
  * @param {string} filePath The relative path to the file to parse.
  * @returns {Object} The object representation of the file according to requirements.txt.
  * 
  * Assumptions:
  * 
- * Requirements: "If a key has already been used, you may skip over parsing that key,value pair"
+ * Requirements: "For every odd numbered line: ..."
+ * Assume this is using 1 indexing rather than 0 indexing because other instructions also use 1 indexing.
  * 
- * Assume this is optional based on the use of the word "may".
- * That is, it is also okay to overwrite previously written values for duplicate keys.
- * Note that this occurs for key 't' in the test.txt example.
  */
 export default async function parseFile(filePath) {
     // This is the returned object
@@ -38,11 +36,9 @@ export default async function parseFile(filePath) {
         // requirements describe 1-indexing
         const requirementsIndex = index + 1;
         if (requirementsIndex % 2 == 0) {
-            // Note that Object.assign will overwrite previously written keys in the target (left)
-            // if the same keys appear in the source (right)
-            Object.assign(parsedObject, processEvenLine(line));
+            processEvenLine(line, parsedObject);
         } else {
-            Object.assign(parsedObject, processOddLine(line));
+            processOddLine(line, parsedObject);
         }
     });
 
@@ -50,9 +46,9 @@ export default async function parseFile(filePath) {
 }
 
 /**
- * 
+ * Processes an odd line of the input file and adds key/value pairs to the parsedObject.
  * @param {string} line A string with no whitespace characters.
- * @returns {Object} Containing the keys/values according to the odd line requirements
+ * @param {Object} parsedObject The object being parsed according to the requirements.
  * 
  * Assumptions:
  * 
@@ -67,36 +63,38 @@ export default async function parseFile(filePath) {
     }
  * Assume that the given example is wrong as it is inconsistent with the example given for "every 3rd character"
  * (see requirements for even lines), which has the more commonly accepted meaning of being the character
- * 3 positions away from the previously chosen character.
+ * 3 positions away from the previously chosen character. The tricky part for this requirement is that it starts
+ * with the first character rather than the 5th (i.e. the 6th character is the 5th character from the 1st character).
+ * 
  */
-function processOddLine(line) {
-    const returnValue = {};
-
+function processOddLine(line, parsedObject) {
     // Break line into chunks of 5 characters (or less for the last chunk)
     const chunks = line.match(/.{1,5}/g);
     chunks.forEach((chunk) => {
-        returnValue[chunk[0]] = chunk.slice(1);
+        const key = chunk[0];
+        const value = chunk.slice(1);
+        if (value && key) { // only assign the value to the key if they are both truthy
+            // If there is already a value at this key, keep it, otherwise assign the new value.
+            parsedObject[key] = parsedObject[key] || value;
+        }
     });
-
-    return returnValue;
 }
 
 /**
- * 
+ * Processes an even line of the input file and adds key/value pairs to the parsedObject.
  * @param {string} line A string with no whitespace characters.
- * @returns {Object} Containing the keys/values according to the even line requirements
+ * @param {Object} parsedObject The object being parsed according to the requirements.
  * 
  */
-function processEvenLine(line) {
-    const returnValue = {};
-
+function processEvenLine(line, parsedObject) {
     // Break line into chunks of 3 characters (or less for the last chunk)
     const chunks = line.match(/.{1,3}/g);
     chunks.forEach((chunk) => {
-        // Assume it is okay to have keys of length less than 2
-        // and values of length 0 or 1
-        returnValue[chunk.slice(0, 2)] = chunk.slice(2, 3);
+        const key = chunk.slice(0,2);
+        const value = chunk.slice(2,3);
+        if (value && key) { // only assign the value to the key if they are both truthy
+            // If there is already a value at this key, keep it, otherwise assign the new value.
+            parsedObject[key] = parsedObject[key] || value;
+        }
     });
-    
-    return returnValue;
 }
