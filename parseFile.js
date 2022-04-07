@@ -15,6 +15,7 @@ import { readFile } from 'fs/promises';
  * 
  * Assume this is optional based on the use of the word "may".
  * That is, it is also okay to overwrite previously written values for duplicate keys.
+ * Note that this occurs for key 't' in the test.txt example.
  */
 export default async function parseFile(filePath) {
     // This is the returned object
@@ -45,9 +46,6 @@ export default async function parseFile(filePath) {
         }
     });
 
-    // Print the average key length according to requirements
-    const keys = Object.keys(parsedObject);
-    console.log("average:", (keys.join('').length / keys.length).toFixed(2));
     return parsedObject;
 }
 
