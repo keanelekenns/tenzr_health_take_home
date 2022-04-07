@@ -65,12 +65,12 @@ export default async function parseFile(filePath) {
  * (see requirements for even lines), which has the more commonly accepted meaning of being the character
  * 3 positions away from the previously chosen character. The tricky part for this requirement is that it starts
  * with the first character rather than the 5th (i.e. the 6th character is the 5th character from the 1st character).
- * 
+ * NOTE: This can easily be adjusted to the example output by changing 5 to 4 below.
  */
 function processOddLine(line, parsedObject) {
     // Break line into chunks of 5 characters (or less for the last chunk)
     const chunks = line.match(/.{1,5}/g);
-    chunks.forEach((chunk) => {
+    chunks && chunks.forEach((chunk) => {
         const key = chunk[0];
         const value = chunk.slice(1);
         if (value && key) { // only assign the value to the key if they are both truthy
@@ -89,7 +89,7 @@ function processOddLine(line, parsedObject) {
 function processEvenLine(line, parsedObject) {
     // Break line into chunks of 3 characters (or less for the last chunk)
     const chunks = line.match(/.{1,3}/g);
-    chunks.forEach((chunk) => {
+    chunks && chunks.forEach((chunk) => {
         const key = chunk.slice(0,2);
         const value = chunk.slice(2,3);
         if (value && key) { // only assign the value to the key if they are both truthy

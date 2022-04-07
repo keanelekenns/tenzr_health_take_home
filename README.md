@@ -14,7 +14,7 @@ Then run ```node . <filename>``` or ```npm start <filename>```
 The filename should be a relative path to an input file according to the [requirements specification](requirements.txt).
 The output will be printed to the console according to the same requirements file.
 
-## Example
+## Examples
 
 Running ```node . test_files/test.txt```
 
@@ -23,7 +23,7 @@ Outputs:
 ```
 {
   T: 'heca',
-  t: '',
+  t: 'inth',
   e: 'hat',
   is: 't',
   he: 'h',
@@ -32,4 +32,40 @@ Outputs:
   ec: 'a'
 }
 average: 1.63
+```
+---
+Running ```node . test_files/test2.txt```
+
+Outputs:
+
+```
+{ T: 'heca', t: 'inth', e: 'hat\\', n: 'isth', a: 't' }
+average: 1.00
+```
+---
+Running ```node . test_files/test3.txt```
+
+Outputs:
+
+```
+{ T: 'heca', t: 'inth', e: 'hat', i: 'sthe', h: 'atin' }
+average: 1.00
+```
+---
+Running ```node . test_files/test4.txt```
+
+Outputs:
+
+```
+{
+  Th: 'e',
+  ca: 't',
+  in: 't',
+  he: 'h',
+  is: 't',
+  at: 'i',
+  nt: 'h',
+  ec: 'a'
+}
+average: 2.00
 ```
