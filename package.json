@@ -2,7 +2,7 @@
   "name": "tenzr_health_take_home",
   "version": "1.0.0",
   "description": "This is a take home assignment as part of the application process for TenzrHealth",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

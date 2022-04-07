@@ -13,3 +13,23 @@ Then run ```node . <filename>``` or ```npm start <filename>```
 
 The filename should be a relative path to an input file according to the [requirements specification](requirements.txt).
 The output will be printed to the console according to the same requirements file.
+
+## Example
+
+Running ```node . test_files/test.txt```
+
+Outputs:
+
+```
+{
+  T: 'heca',
+  t: '',
+  e: 'hat',
+  is: 't',
+  he: 'h',
+  at: 'i',
+  nt: 'h',
+  ec: 'a'
+}
+average: 1.63
+```
