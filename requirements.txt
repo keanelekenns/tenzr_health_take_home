@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------
 
-**You may use any programming language of your choosing to answer the following question**
+**You may use any programming language of your choosing to answer the following challenge**
 
 **We are looking out to draw out your coding style, please use best practices and conventions as you see fit**
 
@@ -25,17 +25,21 @@ Your task is to write a program that parses a text file and outputs a JSON objec
 Other Requirements
 ------------------------------------------------------------------------------------------
 
-- Print the average length of keys (Rounded to 2 decimal places)
+- The solution should ignore any whitespace characters (ie. spaces, tabs)
 
-- Spaces must be ignored
+- The solution should skip parsing a (key,value) pair if that key already exists in your object
 
-- If a key has already been used, you may skip over parsing that key,value pair
+- The solution should skip any remaining characters in a line that is missing a key or a value
 
-- Please clearly specify any assumptions you have made in your code
+- The solution should print the average length of keys (Rounded to 2 decimal places)
+
+------------------------------------------------------------------------------------------
+
+- Please clearly specify any assumptions you have made in your solution
 
 - Your program should be able to take a .txt file as an argument
 
-- Include instructions to compile in a readme (if applicable)
+- Please include instructions to compile in a readme (if applicable)
 
 - Goodluck :)
 
@@ -54,6 +58,7 @@ EXAMPLE
  		 "he": "h",
 		 "at": "i",
 		 "nt": "h",
+		 "ec": "a"
 		}
 
-		average: 1.57
+		average: 1.63

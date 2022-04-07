@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/keanelekenns/tenzr_health_take_home/issues"
   },
-  "homepage": "https://github.com/keanelekenns/tenzr_health_take_home#readme"
+  "homepage": "https://github.com/keanelekenns/tenzr_health_take_home#readme",
+  "engines" : { 
+    "npm" : ">=8.0.0",
+    "node" : ">=16.0.0"
+  }
 }
