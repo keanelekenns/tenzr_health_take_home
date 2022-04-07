@@ -1,0 +1,20 @@
+{
+  "name": "tenzr_health_take_home",
+  "version": "1.0.0",
+  "description": "This is a take home assignment as part of the application process for TenzrHealth",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keanelekenns/tenzr_health_take_home.git"
+  },
+  "author": "Keanelek Enns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keanelekenns/tenzr_health_take_home/issues"
+  },
+  "homepage": "https://github.com/keanelekenns/tenzr_health_take_home#readme"
+}
