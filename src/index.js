@@ -10,6 +10,10 @@ const filePath = process.argv[2];
 
 // Print the JSON object
 const parsedObject = await parseFile(filePath);
+// Stop the program if parsing the file failed
+if (!parsedObject){
+    process.exit();
+}
 console.log(parsedObject);
 
 // Print the average key length according to requirements

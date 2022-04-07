@@ -7,7 +7,9 @@ import { readFile } from 'fs/promises';
 /**
  * Parse a file according to requirements.txt.
  * @param {string} filePath The relative path to the file to parse.
- * @returns {Object} The object representation of the file according to requirements.txt.
+ * @returns {Object} The object representation of the file according
+ * to requirements.txt upon success.
+ * @returns {null} Upon failure.
  * 
  * Assumptions:
  * 
@@ -25,6 +27,7 @@ export default async function parseFile(filePath) {
         fileContents = await readFile(filePath, 'utf8');
     } catch (err) {
         console.error(err);
+        return null;
     }
 
     // Split file by newlines (optionally carriage returns too) and remove spaces
